@@ -1,28 +1,28 @@
 package com.classattendancemaster.Entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Konrad on 2017-03-20.
  */
-@Entity
+@Entity(name="students")
 public class Student {
     @Id
     @GeneratedValue
-    private long Id;
+    private Long Id;
     private String firstName;
     private String lastName;
+    private String albumNumber;
 
-    @OneToMany
-    private Kierunek kierunek;
-    @OneToMany
-    private Zajecia zajecia;
+//    @OneToMany(mappedBy = "students")
+//    private List<AttendingClass> attendingClass;
 
-    public long getId() {
+    public Long getId() {
         return Id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         Id = id;
     }
 
@@ -42,20 +42,13 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public Kierunek getKierunek() {
-        return kierunek;
-    }
-
-    public void setKierunek(Kierunek kierunek) {
-        this.kierunek = kierunek;
-    }
-
-    public Zajecia getZajecia() {
-        return zajecia;
-    }
-
-    public void setZajecia(Zajecia zajecia) {
-        this.zajecia = zajecia;
-    }
+//
+//    public AttendingClass getAttendingClass() {
+//        return attendingClass;
+//    }
+//
+//    public void setAttendingClass(AttendingClass aclass) {
+//        this.attendingClass = aclass;
+//    }
 }
 

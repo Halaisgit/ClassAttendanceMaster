@@ -9,31 +9,29 @@ import javax.persistence.OneToOne;
  * Created by Konrad on 2017-03-20.
  */
 @Entity
-public class Pracownik {
+public class Employee {
     @Id
     @GeneratedValue
-    private long Id;
+    private Long Id;
 
     private String firstName;
     private String lastName;
     private String title;
 
-    @OneToOne
-    private Wydzial wydzial;
-
-    public Wydzial getWydzial() {
-        return wydzial;
+    public Employee() {
     }
 
-    public void setWydzial(Wydzial wydzial) {
-        this.wydzial = wydzial;
+    public Employee(String firstName, String lastName, String title) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.title = title;
     }
 
-    public long getId() {
+    public Long getId() {
         return Id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         Id = id;
     }
 

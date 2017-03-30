@@ -11,21 +11,29 @@ import java.util.List;
  * Created by Konrad on 2017-03-20.
  */
 @Entity
-public class Zajecia {
+public class AttendingClass {
     @Id
     @GeneratedValue
-    private long Id;
+    private Long Id;
     private String name;
     private LocalDateTime localDateTime;
-    @OneToMany
-    private List<Student> studentList;
-    private Pracownik pracownik;
 
-    public long getId() {
+    //private Student student;
+   // private Employee employee;
+
+//    public Student getStudent() {
+//        return student;
+//    }
+//
+//    public void setStudent(Student student) {
+//        this.student = student;
+//    }
+//
+    public Long getId() {
         return Id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         Id = id;
     }
 
@@ -45,19 +53,11 @@ public class Zajecia {
         this.localDateTime = localDateTime;
     }
 
-    public List<Student> getStudentList() {
-        return studentList;
-    }
-
-    public void setStudentList(List<Student> studentList) {
-        this.studentList = studentList;
-    }
-
-    public Pracownik getPracownik() {
-        return pracownik;
-    }
-
-    public void setPracownik(Pracownik pracownik) {
-        this.pracownik = pracownik;
-    }
+//    public Employee getEmployee() {
+//        return employee;
+//    }
+//
+//    public void setEmployee(Employee employee) {
+//        this.employee = employee;
+//    }
 }
