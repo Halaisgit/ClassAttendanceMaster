@@ -10,7 +10,7 @@ import java.util.List;
 public class Student {
     @Id
     @GeneratedValue
-    private Long Id;
+    private Long id;
     private String firstName;
     private String lastName;
     private String albumNumber;
@@ -19,11 +19,11 @@ public class Student {
 //    private List<AttendingClass> attendingClass;
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -40,6 +40,14 @@ public class Student {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getAlbumNumber() {
+        return albumNumber;
+    }
+
+    public void setAlbumNumber(String albumNumber) {
+        this.albumNumber = albumNumber;
     }
 
 //

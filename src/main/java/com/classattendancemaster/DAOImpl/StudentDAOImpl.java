@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -18,24 +19,26 @@ import java.util.List;
  */
 @Repository
 @Transactional
-public class StudentDAOImpl implements StudentDAO
-{
-    @Autowired
-    SessionFactory sessionFactory;
-
-    private Session getSession() {
-        return sessionFactory.getCurrentSession();
-    }
+public class StudentDAOImpl implements StudentDAO {
+    @PersistenceContext
+    EntityManager entityManager;
 
     @Autowired
     private StudentRepository repository;
+
     @Override
-    public List<Student> findAll(){
+    public List<Student> findAll() {
         return repository.findAll();
     }
 
+
     @Override
     public Student findById(Long id) {
-        return null;
+        return repository.findById(id);
+    }
+
+    @Override
+    public void save(Student student) {
+        entityManager.persist(student);
     }
 }
