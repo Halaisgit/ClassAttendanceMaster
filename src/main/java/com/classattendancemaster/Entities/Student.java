@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by Konrad on 2017-03-20.
  */
-@Entity(name="students")
+@Entity(name = "students")
 public class Student {
     @Id
     @GeneratedValue
@@ -15,7 +15,15 @@ public class Student {
     private String lastName;
     private String albumNumber;
 
-//    @OneToMany(mappedBy = "students")
+    public Student() {
+    }
+
+    public Student(String firstName, String lastName, String albumNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.albumNumber = albumNumber;
+    }
+    //    @OneToMany(mappedBy = "students")
 //    private List<AttendingClass> attendingClass;
 
     public Long getId() {

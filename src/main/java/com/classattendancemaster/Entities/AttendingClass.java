@@ -18,17 +18,14 @@ public class AttendingClass {
     private String name;
     private LocalDateTime localDateTime;
 
-    //private Student student;
-   // private Employee employee;
+    public AttendingClass() {
+    }
 
-//    public Student getStudent() {
-//        return student;
-//    }
-//
-//    public void setStudent(Student student) {
-//        this.student = student;
-//    }
-//
+    public AttendingClass(String name, LocalDateTime localDateTime) {
+        this.name = name;
+        this.localDateTime = localDateTime;
+    }
+
     public Long getId() {
         return Id;
     }
@@ -52,12 +49,4 @@ public class AttendingClass {
     public void setLocalDateTime(LocalDateTime localDateTime) {
         this.localDateTime = localDateTime;
     }
-
-//    public Employee getEmployee() {
-//        return employee;
-//    }
-//
-//    public void setEmployee(Employee employee) {
-//        this.employee = employee;
-//    }
 }
