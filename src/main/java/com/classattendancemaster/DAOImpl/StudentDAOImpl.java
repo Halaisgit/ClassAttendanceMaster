@@ -21,7 +21,7 @@ import java.util.List;
 @Transactional
 public class StudentDAOImpl implements StudentDAO {
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     @Autowired
     private StudentRepository repository;

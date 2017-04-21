@@ -9,7 +9,8 @@ import java.util.List;
 @Entity(name = "students")
 public class Student {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "student_Id")
     private Long id;
     private String firstName;
     private String lastName;
@@ -23,8 +24,6 @@ public class Student {
         this.lastName = lastName;
         this.albumNumber = albumNumber;
     }
-    //    @OneToMany(mappedBy = "students")
-//    private List<AttendingClass> attendingClass;
 
     public Long getId() {
         return id;
@@ -57,14 +56,5 @@ public class Student {
     public void setAlbumNumber(String albumNumber) {
         this.albumNumber = albumNumber;
     }
-
-//
-//    public AttendingClass getAttendingClass() {
-//        return attendingClass;
-//    }
-//
-//    public void setAttendingClass(AttendingClass aclass) {
-//        this.attendingClass = aclass;
-//    }
 }
 

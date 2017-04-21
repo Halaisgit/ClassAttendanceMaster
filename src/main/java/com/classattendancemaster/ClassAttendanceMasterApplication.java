@@ -17,11 +17,11 @@ public class ClassAttendanceMasterApplication {
 		SpringApplication.run(ClassAttendanceMasterApplication.class, args);
 	}
 
-	@PostConstruct
-	public void addRandomStudents(){
-
-		studentRepository.save(new Student("Kondziu", "Gabara", "122077"));
-		studentRepository.save(new Student("Adam", "Halicki", "116289"));
-
-	}
+//	@PostConstruct
+//	public void addRandomStudents(){
+//
+//		studentRepository.save(new Student("Kondziu", "Gabara", "122077"));
+//		studentRepository.save(new Student("Adam", "Halicki", "116289"));
+//
+//	}
 }

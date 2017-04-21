@@ -1,27 +1,25 @@
 package com.classattendancemaster.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 /**
  * Created by Konrad on 2017-03-20.
  */
 @Entity
-public class Employee {
+public class Lecturer {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "employeeId")
     private Long Id;
 
     private String firstName;
     private String lastName;
     private String title;
 
-    public Employee() {
+    public Lecturer() {
     }
 
-    public Employee(String firstName, String lastName, String title) {
+    public Lecturer(String firstName, String lastName, String title) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.title = title;
