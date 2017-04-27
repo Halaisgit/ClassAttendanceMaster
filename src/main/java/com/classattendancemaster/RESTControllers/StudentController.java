@@ -17,18 +17,18 @@ import java.util.List;
 
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/student")
-public class RestController {
+public class StudentController {
     @Autowired
-    StudentRepository studentRepository;
+    StudentDAOImpl studentDAO;
 
     @GetMapping("/findbyid/{id}")
     public Student findById(@PathVariable long id){
-        return studentRepository.findById(id);
+        return studentDAO.findById(id);
     }
 
     @GetMapping("/getall")
     public List<Student> getAll(){
-        return studentRepository.findAll();
+        return studentDAO.findAll();
     }
 
 }

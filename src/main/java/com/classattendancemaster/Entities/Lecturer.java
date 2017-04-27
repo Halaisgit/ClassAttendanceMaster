@@ -5,11 +5,11 @@ import javax.persistence.*;
 /**
  * Created by Konrad on 2017-03-20.
  */
-@Entity
+@Entity(name = "lecturer")
 public class Lecturer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "employeeId")
+    @Column(name = "lecturer_id")
     private Long Id;
 
     private String firstName;

@@ -20,7 +20,8 @@ public class AttendanceList {
     @OneToOne
     private Lecturer lecturer;
     @OneToOne
-    private AttendanceClass attendanceClass;
+    private Subject subject;
+
     public AttendanceList() {
     }
 
@@ -29,10 +30,28 @@ public class AttendanceList {
         this.localDateTime = localDateTime;
     }
 
-    public AttendanceList(String name, LocalDateTime localDateTime, List<Student> studentList) {
+    public AttendanceList(String name, LocalDateTime localDateTime, List<Student> studentList, Subject subject, Lecturer lecturer) {
         this.name = name;
         this.localDateTime = localDateTime;
         this.studentList = studentList;
+        this.subject = subject;
+        this.lecturer = lecturer;
+    }
+
+    public Lecturer getLecturer() {
+        return lecturer;
+    }
+
+    public void setLecturer(Lecturer lecturer) {
+        this.lecturer = lecturer;
+    }
+
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public void setSubject(Subject subject) {
+        this.subject = subject;
     }
 
     public List<Student> getStudentList() {
