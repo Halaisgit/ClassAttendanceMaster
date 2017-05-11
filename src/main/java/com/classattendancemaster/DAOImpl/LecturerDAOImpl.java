@@ -6,9 +6,8 @@ import com.classattendancemaster.Repositories.LecturerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * Created by Konrad on 2017-04-27.
@@ -17,10 +16,12 @@ import javax.transaction.Transactional;
 @Transactional
 public class LecturerDAOImpl implements LecturerDAO {
 
+    private final LecturerRepository lecturerRepository;
+
     @Autowired
-    LecturerRepository lecturerRepository;
-    @PersistenceContext
-    EntityManager entityManager;
+    public LecturerDAOImpl(LecturerRepository lecturerRepository) {
+        this.lecturerRepository = lecturerRepository;
+    }
 
     @Override
     public Lecturer findOne(Long id) {
@@ -28,13 +29,19 @@ public class LecturerDAOImpl implements LecturerDAO {
     }
 
     @Override
-    public Lecturer findByLastName(String name) {
-        return lecturerRepository.findByLastName(name);
+    public Lecturer findByFirstNameAndLastName(String firstName, String lastName) {
+        return lecturerRepository.findByFirstNameAndLastName(firstName, lastName);
     }
+
 
     @Override
     public void save(Lecturer lecturer) {
         lecturerRepository.save(lecturer);
 
+    }
+
+    @Override
+    public List<Lecturer> findAll() {
+        return lecturerRepository.findAll();
     }
 }

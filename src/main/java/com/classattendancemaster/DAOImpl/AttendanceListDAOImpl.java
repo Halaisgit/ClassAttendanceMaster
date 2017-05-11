@@ -27,4 +27,9 @@ public class AttendanceListDAOImpl implements AttendanceListDAO {
     public void save(AttendanceList attendanceList) {
         attendanceListRepository.save(attendanceList);
     }
+
+    @Override
+    public AttendanceList findOne(Long id) {
+        return attendanceListRepository.findOne(id);
+    }
 }

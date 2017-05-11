@@ -14,7 +14,9 @@ public class Subject {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "subject_id")
     private Long id;
+    @Enumerated(EnumType.STRING)
     private SubjectType subjectType;
+    @Column(unique = true)
     private String name;
 
     public Subject() {
@@ -33,6 +35,7 @@ public class Subject {
     public void setId(Long id) {
         this.id = id;
     }
+
 
     public SubjectType getSubjectType() {
         return subjectType;

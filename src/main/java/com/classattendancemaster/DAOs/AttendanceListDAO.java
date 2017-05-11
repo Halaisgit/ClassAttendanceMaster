@@ -7,4 +7,5 @@ import com.classattendancemaster.Entities.AttendanceList;
  */
 public interface AttendanceListDAO {
     void save(AttendanceList attendanceList);
+    AttendanceList findOne(Long id);
 }

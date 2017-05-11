@@ -32,19 +32,19 @@ public class ClassAttendanceMasterApplication {
         SpringApplication.run(ClassAttendanceMasterApplication.class, args);
     }
 
-    @PostConstruct
-    public void createAttendanceList() {
-
-        subjectDAO.save(new Subject(SubjectType.Laboratory, "PT"));
-        studentDAO.save(new Student("Kondziu", "Gabara", "122077"));
-        studentDAO.save(new Student("Adam", "Halicki", "116289"));
-        lecturerDAO.save(new Lecturer("Przemysław", "Walkowiak", "mgr. inż."));
-        attendanceListDAO.save(new AttendanceList(
-                "lab5",
-                LocalDateTime.now(),
-                studentDAO.findAll(),
-                subjectDAO.findByName("PT"),
-                lecturerDAO.findByLastName("Walkowiak")));
-
-    }
+//    @PostConstruct
+//    public void createAttendanceList() {
+//
+//        subjectDAO.save(new Subject(SubjectType.Project, "PT"));
+//        studentDAO.save(new Student("Kondziu", "Gabara", "122077"));
+//        studentDAO.save(new Student("Adam", "Halicki", "116289"));
+//        lecturerDAO.save(new Lecturer("Inny", "Nauczyciel", "mgr. inż."));
+//        attendanceListDAO.save(new AttendanceList(
+//                "lab6",
+//                LocalDateTime.now(),
+//                studentDAO.findAll(),
+//                subjectDAO.findByNameAndSubjectType("PT", SubjectType.Project),
+//                lecturerDAO.findByFirstNameAndLastName("Nauczyciel")));
+//
+//    }
 }
