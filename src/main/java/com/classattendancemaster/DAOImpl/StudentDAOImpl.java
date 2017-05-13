@@ -20,11 +20,11 @@ import java.util.List;
 @Repository
 @Transactional
 public class StudentDAOImpl implements StudentDAO {
-    @PersistenceContext
-    private EntityManager entityManager;
-
+    private final StudentRepository repository;
     @Autowired
-    private StudentRepository repository;
+    public StudentDAOImpl(StudentRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public List<Student> findAll() {
@@ -39,6 +39,6 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public void save(Student student) {
-        entityManager.persist(student);
+        repository.save(student);
     }
 }
