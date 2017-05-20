@@ -1,4 +1,5 @@
-package com.company;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.smartcardio.CardException;
 
@@ -6,6 +7,7 @@ public class Main {
 
     public static void main(String[] args) throws CardException {
         boolean wait = true;
+        Logger LOGGER = LoggerFactory.getLogger(Main.class);
         SmartcardConnector smartcardConnector = new SmartcardConnector();
 
         while (wait) {
@@ -18,7 +20,8 @@ public class Main {
                 }
 
             } catch (Exception e) {
-//                System.out.println(e);
+                LOGGER.info(e.getMessage());
+                wait = false;
             }
         }
     }
