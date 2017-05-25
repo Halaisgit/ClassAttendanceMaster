@@ -10,18 +10,26 @@ import {FormsModule} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AttendanceService} from './services/attendance.service';
 import {LecturerService} from './services/lecturer.service';
+import {LecturerComponent} from './lecturer/lecturer.component';
+import {routing} from './app.routes';
+import {MainComponent} from './main/main.component';
+import {NavbarComponent} from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StudentsComponent,
-    AttendanceComponent
+    AttendanceComponent,
+    LecturerComponent,
+    MainComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
     NgbModule.forRoot(),
+    routing,
   ],
   providers: [StudentService, AttendanceService, LecturerService],
   bootstrap: [AppComponent]
