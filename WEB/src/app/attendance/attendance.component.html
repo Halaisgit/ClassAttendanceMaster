@@ -1,0 +1,22 @@
+<table class="table table-bordered">
+  <thead class="thead-default">
+  <tr>
+    <th>ID</th>
+    <th>Class Name</th>
+    <th>Date</th>
+    <th>Lecturer</th>
+    <th>Subject</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let attendance of attendances">
+    <th>{{attendance.id}}</th>
+    <th>{{attendance.name}}</th>
+    <th>{{attendance.localDateTime.dayOfMonth}} {{attendance.localDateTime.month.toLowerCase()}} {{attendance.localDateTime.hour}} </th>
+    <th>{{attendance.lecturer.title}} {{attendance.lecturer.firstName}} {{attendance.lecturer.lastName}}</th>
+    <th>{{attendance.subject.name}} {{attendance.subject.subjectType}}</th>
+  </tr>
+  </tbody>
+</table>
+
+

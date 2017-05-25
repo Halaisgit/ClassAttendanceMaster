@@ -4,7 +4,10 @@ import com.classattendancemaster.DAOImpl.SubjectDAOImpl;
 import com.classattendancemaster.Entities.Subject;
 import com.classattendancemaster.Enum.SubjectType;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -20,19 +23,17 @@ public class SubjectController {
     public SubjectController(SubjectDAOImpl subjectDAO) {
         this.subjectDAO = subjectDAO;
     }
-    @GetMapping("/getAll")
+    @GetMapping("")
     public List<Subject> getAll(){
         return  subjectDAO.findAll();
     }
     @RequestMapping("/create")
-    public String create(@RequestParam String name, @RequestParam SubjectType subjectType){
+    public void create(@RequestParam String name, @RequestParam SubjectType subjectType){
         Subject testSubject = subjectDAO.findByNameAndSubjectType(name, subjectType);
         if(testSubject == null) {
             Subject subject = new Subject(subjectType, name);
             subjectDAO.save(subject);
-            return("*/subject/getAll");
         }
-        else return("index");
     }
 
 }

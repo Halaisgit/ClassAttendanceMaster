@@ -9,6 +9,8 @@ import java.util.List;
  */
 public interface StudentDAO {
     List<Student> findAll();
-    Student findById(Long id);
+    Student findOne(Long id);
     void save(Student student);
+    Student findByAlbumNumber(String albumNumber);
+    void delete(Student student);
 }

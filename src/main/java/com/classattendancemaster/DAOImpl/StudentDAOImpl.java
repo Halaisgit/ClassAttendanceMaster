@@ -3,14 +3,9 @@ package com.classattendancemaster.DAOImpl;
 import com.classattendancemaster.DAOs.StudentDAO;
 import com.classattendancemaster.Entities.Student;
 import com.classattendancemaster.Repositories.StudentRepository;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.Entity;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -33,12 +28,22 @@ public class StudentDAOImpl implements StudentDAO {
 
 
     @Override
-    public Student findById(Long id) {
-        return repository.findById(id);
+    public Student findOne(Long id) {
+        return repository.findOne(id);
     }
 
     @Override
     public void save(Student student) {
         repository.save(student);
+    }
+
+    @Override
+    public Student findByAlbumNumber(String albumNumber) {
+        return repository.findByAlbumNumber(albumNumber);
+    }
+
+    @Override
+    public void delete(Student student) {
+        repository.delete(student);
     }
 }

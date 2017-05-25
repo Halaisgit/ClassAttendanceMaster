@@ -6,9 +6,8 @@ import com.classattendancemaster.Repositories.AttendanceListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * Created by Konrad on 2017-04-27.
@@ -31,5 +30,9 @@ public class AttendanceListDAOImpl implements AttendanceListDAO {
     @Override
     public AttendanceList findOne(Long id) {
         return attendanceListRepository.findOne(id);
+    }
+
+    public List<AttendanceList> findAll() {
+        return attendanceListRepository.findAll();
     }
 }

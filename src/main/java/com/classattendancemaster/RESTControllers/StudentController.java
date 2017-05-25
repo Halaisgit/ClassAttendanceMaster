@@ -2,9 +2,11 @@ package com.classattendancemaster.RESTControllers;
 
 import com.classattendancemaster.DAOImpl.StudentDAOImpl;
 import com.classattendancemaster.Entities.Student;
-import com.classattendancemaster.Repositories.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -13,7 +15,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/student")
+@RequestMapping("/students")
 public class StudentController {
     private final StudentDAOImpl studentDAO;
 
@@ -22,14 +24,36 @@ public class StudentController {
         this.studentDAO = studentDAO;
     }
 
-    @GetMapping("/findbyid/{id}")
-    public Student findById(@PathVariable long id) {
-        return studentDAO.findById(id);
+    @GetMapping("/{id}")
+    public Student findOne(@PathVariable long id) {
+        return studentDAO.findOne(id);
     }
 
-    @GetMapping("/getall")
+    @GetMapping("")
     public List<Student> getAll() {
         return studentDAO.findAll();
+    }
+
+    @RequestMapping("/create")
+    public void create(@PathVariable String firstName,
+                       @PathVariable String lastName,
+                       @PathVariable String albumNumber) {
+        Student studentDummy = studentDAO.findByAlbumNumber(albumNumber);
+        if (studentDummy == null) {
+            Student student = new Student(firstName, lastName, albumNumber);
+            studentDAO.save(student);
+        }
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String delete(@PathVariable Long id) {
+        Student studentDummy = studentDAO.findOne(id);
+        if (studentDummy != null) {
+            studentDAO.delete(studentDummy);
+            return "redirect:/students";
+        } else {
+            return "redirect:/students";
+        }
     }
 
 }
