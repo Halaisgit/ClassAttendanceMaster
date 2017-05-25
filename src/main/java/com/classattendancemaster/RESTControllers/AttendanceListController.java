@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * Created by Konrad on 2017-04-27.
@@ -25,6 +26,10 @@ public class AttendanceListController {
         return attendanceListDAO.findOne(id);
     }
 
+    @GetMapping(value = "")
+    public List<AttendanceList> getAll(){
+        return attendanceListDAO.findAll();
+    }
     @RequestMapping("/create")
     public void create(@RequestParam String name){
         AttendanceList attendanceList = new AttendanceList(name, LocalDateTime.now());
