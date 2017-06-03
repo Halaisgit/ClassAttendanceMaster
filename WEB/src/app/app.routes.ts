@@ -7,12 +7,14 @@ import {StudentsComponent} from './students/students.component';
 import {LecturerComponent} from './lecturer/lecturer.component';
 import {AttendanceComponent} from './attendance/attendance.component';
 import {MainComponent} from './main/main.component';
+import {SubjectComponent} from './subject/subject.component';
 
 export const routes: Routes = [
   {path: '', component: MainComponent},
   {path: 'students', component: StudentsComponent},
   {path: 'lecturer', component: LecturerComponent},
-  {path: 'attendance', component: AttendanceComponent}
+  {path: 'attendance', component: AttendanceComponent},
+  {path: 'subject', component: SubjectComponent},
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

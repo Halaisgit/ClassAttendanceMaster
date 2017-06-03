@@ -1,0 +1,16 @@
+<table class="table table-bordered">
+  <thead class="thead-default">
+  <tr>
+    <th>Nazwa przedmiotu</th>
+    <th>Typ przedmiotu</th>
+    <th>ID</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let subject of subjects">
+    <th>{{subject.name}}</th>
+    <th>{{subject.subjectType}}</th>
+    <th>{{subject.id}}</th>
+  </tr>
+  </tbody>
+</table>

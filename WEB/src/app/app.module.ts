@@ -14,6 +14,9 @@ import {LecturerComponent} from './lecturer/lecturer.component';
 import {routing} from './app.routes';
 import {MainComponent} from './main/main.component';
 import {NavbarComponent} from './navbar/navbar.component';
+import {SubjectService} from './services/subject.service';
+import {SubjectComponent } from './subject/subject.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import {NavbarComponent} from './navbar/navbar.component';
     AttendanceComponent,
     LecturerComponent,
     MainComponent,
-    NavbarComponent
+    NavbarComponent,
+    SubjectComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,7 @@ import {NavbarComponent} from './navbar/navbar.component';
     NgbModule.forRoot(),
     routing,
   ],
-  providers: [StudentService, AttendanceService, LecturerService],
+  providers: [StudentService, AttendanceService, LecturerService, SubjectService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
