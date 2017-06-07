@@ -3,6 +3,7 @@ import {StudentService} from '../services/students.service';
 import {Students} from '../interfaces/students.interface';
 
 @Component({
+
   selector: 'app-students',
   templateUrl: './students.component.html',
   styleUrls: ['./students.component.css'],
