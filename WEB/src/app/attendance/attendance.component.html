@@ -11,17 +11,20 @@
     <th>Date</th>
     <th>Lecturer</th>
     <th>Subject</th>
+    <th>Details</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let attendance of attendances">
     <th>{{attendance.id}}</th>
     <th>{{attendance.name}}</th>
-    <th>{{attendance.localDateTime.dayOfMonth}} {{attendance.localDateTime.month.toLowerCase()}} {{attendance.localDateTime.hour}} </th>
+    <th>{{attendance.dateTime | date: 'dd/MM/yyyy HH:MM'}}</th>
     <th>{{attendance.lecturer.title}} {{attendance.lecturer.firstName}} {{attendance.lecturer.lastName}}</th>
     <th>{{attendance.subject.name}} {{attendance.subject.subjectType}}</th>
+    <th> <button type="button" (click)="showDetails(attendance)"> Details </button> </th>
   </tr>
   </tbody>
 </table>
+<router-outlet></router-outlet>
 
 

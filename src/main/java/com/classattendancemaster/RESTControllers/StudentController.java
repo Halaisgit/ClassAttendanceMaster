@@ -32,25 +32,17 @@ public class StudentController {
     }
 
     @RequestMapping("/create")
-    public void create(@RequestParam String firstName,
-                       @RequestParam String lastName,
-                       @RequestParam String albumNumber) {
-        Student studentDummy = studentDAO.findByAlbumNumber(albumNumber);
+    public void create(@RequestBody Student student) {
+        Student studentDummy = studentDAO.findByAlbumNumber(student.getAlbumNumber());
         if (studentDummy == null) {
-            Student student = new Student(firstName, lastName, albumNumber);
             studentDAO.save(student);
         }
     }
 
     @RequestMapping("/delete/{id}")
-    public String delete(@PathVariable Long id) {
+    public void delete(@PathVariable Long id) {
         Student studentDummy = studentDAO.findOne(id);
-        if (studentDummy != null) {
-            studentDAO.delete(studentDummy);
-            return "redirect:/students";
-        } else {
-            return "redirect:/students";
-        }
+        studentDAO.delete(studentDummy);
     }
 
 }

@@ -9,6 +9,7 @@
       <th>First Name</th>
       <th>Last Name</th>
       <th>Album Number</th>
+      <th>Options</th>
     </tr>
     </thead>
     <tbody>
@@ -16,13 +17,28 @@
       <th>{{student.firstName}}</th>
       <th>{{student.lastName}}</th>
       <th>{{student.albumNumber}}</th>
+      <th> <button type="button" (click)="deleteStudent(student.id)"> Delete </button> </th>
     </tr>
     </tbody>
   </table>
-<nav>
-<a class="button" routerLink="subject">Create Student</a>
-<a routerLink="subject" routerLinkActive="active">Create Student</a>
-  <a routerLink="subject">Create Student</a>
-</nav>
+<label> New Student: </label>
+<table class="table table-bordered">
+  <thead class="thead-default">
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Album Number</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th> <input #studentName /> </th>
+    <th> <input #studentLastName /> </th>
+    <th> <input #studentAlbumNumber />
+    <button md-raised-button type="button" (click)="create({firstName: studentName.value, lastName: studentLastName.value, albumNumber: studentAlbumNumber.value})"> Add New</button></th>
+  </tr>
+  </tbody>
+</table>
+
 <router-outlet></router-outlet>
 

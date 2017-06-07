@@ -6,12 +6,17 @@ import {Attendance} from '../interfaces/attendance';
 
 @Injectable()
 export class AttendanceService {
-  private _attendanceUrl = 'http://localhost:4200/attendance';
+  private _attendanceUrl = 'http://localhost:4200/api/attendance';
+  private _getOneAttendanceUrl: 'http://localhost:4200/api/attendance/';
 
   constructor(private http:Http) { }
 
   getAttendanceList(): Observable<Attendance[]> {
-    return this.http.get(this._attendanceUrl).map((res: Response) => res.json())
+    return this.http.get(this._attendanceUrl).map((res: Response) => res.json());
+  }
+
+  getOne(id): Observable<Attendance> {
+    return this.http.get(this._getOneAttendanceUrl+ id).map((res: Response) => res.json());
   }
 
 }

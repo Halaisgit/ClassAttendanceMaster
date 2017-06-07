@@ -15,7 +15,8 @@ import {routing} from './app.routes';
 import {MainComponent} from './main/main.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {SubjectService} from './services/subject.service';
-import {SubjectComponent } from './subject/subject.component';
+import {SubjectComponent} from './subject/subject.component';
+import {AttendanceDetailsComponent} from './attendance-details/attendance-details.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {SubjectComponent } from './subject/subject.component';
     LecturerComponent,
     MainComponent,
     NavbarComponent,
-    SubjectComponent
+    SubjectComponent,
+    AttendanceDetailsComponent
   ],
   imports: [
     BrowserModule,

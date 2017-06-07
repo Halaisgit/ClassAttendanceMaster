@@ -5,14 +5,13 @@ import com.classattendancemaster.Entities.AttendanceList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
  * Created by Konrad on 2017-04-27.
  */
 @RestController
-@RequestMapping("/attendance")
+@RequestMapping("/api/attendance")
 public class AttendanceListController {
 
     final AttendanceListDAOImpl attendanceListDAO;
@@ -21,7 +20,7 @@ public class AttendanceListController {
     public AttendanceListController(AttendanceListDAOImpl attendanceListDAO) {
         this.attendanceListDAO = attendanceListDAO;
     }
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     public AttendanceList get(@PathVariable Long id){
         return attendanceListDAO.findOne(id);
     }
@@ -31,8 +30,7 @@ public class AttendanceListController {
         return attendanceListDAO.findAll();
     }
     @RequestMapping("/create")
-    public void create(@RequestParam String name){
-        AttendanceList attendanceList = new AttendanceList(name, LocalDateTime.now());
+    public void create(@RequestBody AttendanceList attendanceList){
         attendanceListDAO.save(attendanceList);
     }
 

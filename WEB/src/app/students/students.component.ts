@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {StudentService} from '../services/students.service';
 import {Students} from '../interfaces/students.interface';
 
@@ -11,10 +11,27 @@ import {Students} from '../interfaces/students.interface';
 })
 export class StudentsComponent implements OnInit {
 
+  @Input()
   students: Students[];
-  constructor(private postService: StudentService) {
+  constructor(private studentService: StudentService) {
     this.students = [];
-    this.postService.getStudents().subscribe(students => this.students = this.students.concat(students));
+    this.studentService.getStudents().subscribe(students => this.students = this.students.concat(students));
+  }
+
+  create(data: Students) {
+    if(data) {
+      this.studentService.addStudent(data).subscribe(() => this.getStudents());
+      data = null;
+    }
+  }
+
+  getStudents() {
+    this.students = [];
+    this.studentService.getStudents().subscribe(students => this.students = this.students.concat(students));
+  }
+
+  deleteStudent(id) {
+    this.studentService.deleteStudentById(id).subscribe(() => this.getStudents());
   }
 
   ngOnInit() {

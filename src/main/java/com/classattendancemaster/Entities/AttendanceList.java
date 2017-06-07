@@ -1,7 +1,6 @@
 package com.classattendancemaster.Entities;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -14,28 +13,35 @@ public class AttendanceList {
     @Column(name = "class_Id")
     private Long Id;
     private String name;
-    private LocalDateTime localDateTime;
+    private String dateTime;
     @OneToMany
     private List<Student> studentList;
     @OneToOne
     private Lecturer lecturer;
     @OneToOne
     private Subject subject;
-
     public AttendanceList() {
     }
-
-    public AttendanceList(String name, LocalDateTime localDateTime) {
+    public AttendanceList(String name, String dateTime) {
         this.name = name;
-        this.localDateTime = localDateTime;
+        this.dateTime = dateTime;
     }
 
-    public AttendanceList(String name, LocalDateTime localDateTime, List<Student> studentList, Subject subject, Lecturer lecturer) {
+    public AttendanceList(String name, String dateTime, List<Student> studentList, Subject subject, Lecturer lecturer) {
         this.name = name;
-        this.localDateTime = localDateTime;
+        this.dateTime = dateTime;
         this.studentList = studentList;
         this.subject = subject;
         this.lecturer = lecturer;
+    }
+
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    public AttendanceList setDateTime(String dateTime) {
+        this.dateTime = dateTime;
+        return this;
     }
 
     public Lecturer getLecturer() {
@@ -78,11 +84,4 @@ public class AttendanceList {
         this.name = name;
     }
 
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
-    }
-
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
-    }
 }

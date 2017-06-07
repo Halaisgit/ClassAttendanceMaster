@@ -1,0 +1,27 @@
+<div class="custom-class" style="text-align:center">
+  <h1>
+    {{"Attendance List"}}
+  </h1>
+</div>
+<table class="table border-bottom-0 rounded" >
+  <thead class="thead-default">
+  <tr>
+    <th>ID</th>
+    <th>Class Name</th>
+    <th>Date</th>
+    <th>Lecturer</th>
+    <th>Subject</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <th>{{ attendanceList.id }}</th>
+    <th>{{attendanceList.name}}</th>
+    <th>{{attendanceList.dateTime | date: 'dd/MM/yyyy HH:MM'}} </th>
+    <th>{{attendanceList.lecturer.title}} {{attendanceList.lecturer.firstName}} {{attendanceList.lecturer.lastName}}</th>
+    <th>{{attendanceList.subject.name}} {{attendanceList.subject.subjectType}}</th>
+  </tr>
+  </tbody>
+</table>
+
+
