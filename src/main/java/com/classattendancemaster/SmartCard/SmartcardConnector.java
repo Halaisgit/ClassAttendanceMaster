@@ -1,3 +1,7 @@
+package com.classattendancemaster.SmartCard;
+
+import com.classattendancemaster.Entities.Student;
+
 import javax.smartcardio.*;
 import java.nio.charset.Charset;
 import java.util.List;
@@ -80,7 +84,7 @@ public class SmartcardConnector {
         cardChannel = card.getBasicChannel();
     }
 
-    public void getCardUserData() throws CardException {
+    public Student getCardUserData() throws CardException {
         commandAPDU = new CommandAPDU((byte) 0x00, (byte) 0xA4, (byte) 0x04, (byte) 0x00, connectToELSCatalogBytes, (byte) 0x00, 0x07);
         responseAPDU = cardChannel.transmit(commandAPDU);
 
@@ -106,13 +110,18 @@ public class SmartcardConnector {
             String indeks = spl[3].replaceAll(" ", "");
             String pesel = spl[5].replaceAll(" ", "");
             System.out.println("Nazwisko: " + nazwisko + "\nImie: " + imie + "\nDrugie Imie: " + dimie + "\nIndeks: " + indeks + "\nPesel: " + pesel);
+            card.disconnect(false);
+            return new Student(imie, nazwisko, indeks);
+
         } else {
             String nazwisko = spl[0].substring(0, spl[0].length() - 1).replaceAll(" ", "");
             String imie = spl[1].replaceAll(" ", "");
             String indeks = spl[2].replaceAll(" ", "");
             String pesel = spl[4].replaceAll(" ", "");
             System.out.println("Nazwisko: " + nazwisko + "\nImie: " + imie + "\nIndeks: " + indeks + "\nPesel: " + pesel + "\n");
+            card.disconnect(false);
+            return new Student(imie, nazwisko, indeks);
         }
-        card.disconnect(false);
+
     }
 }

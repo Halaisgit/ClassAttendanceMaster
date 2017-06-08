@@ -28,6 +28,9 @@ export class AttendanceService {
     console.log(data);
     return this.http.post(this._addStudentToListUrl + id + '/students/add', JSON.stringify(data), options).map(this.extractData);
   }
+  addStudentFromCard(id): Observable<Response> {
+    return this.http.get(this._addStudentToListUrl + id + '/students/addCard').map(this.extractData);
+  }
 
   private extractData(res: Response) {
     return res.json() || {};

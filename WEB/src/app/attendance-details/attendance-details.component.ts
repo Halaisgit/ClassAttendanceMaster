@@ -28,6 +28,10 @@ export class AttendanceDetailsComponent implements OnInit {
 
   }
 
+  createCard() {
+    this.attendanceService.addStudentFromCard(this.eventID).subscribe( () => console.log(this));
+  }
+
   create(data: Students) {
     if (data) {
       this.attendanceService.addStudentToList(data, this.eventID).subscribe(() =>

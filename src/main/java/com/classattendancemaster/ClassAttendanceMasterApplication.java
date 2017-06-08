@@ -1,7 +1,23 @@
 package com.classattendancemaster;
 
+import com.classattendancemaster.DAOImpl.AttendanceListDAOImpl;
+import com.classattendancemaster.DAOImpl.LecturerDAOImpl;
+import com.classattendancemaster.DAOImpl.StudentDAOImpl;
+import com.classattendancemaster.DAOImpl.SubjectDAOImpl;
+import com.classattendancemaster.Entities.AttendanceList;
+import com.classattendancemaster.Entities.Lecturer;
+import com.classattendancemaster.Entities.Student;
+import com.classattendancemaster.Entities.Subject;
+import com.classattendancemaster.Enum.SubjectType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import javax.annotation.PostConstruct;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class ClassAttendanceMasterApplication {
