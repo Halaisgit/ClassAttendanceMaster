@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AttendanceService} from '../services/attendance.service';
 import {Attendance} from '../interfaces/attendance';
 import {Router} from '@angular/router';
+import {Students} from '../interfaces/students.interface';
 
 @Component({
   selector: 'app-attendance',
@@ -11,7 +12,8 @@ import {Router} from '@angular/router';
 })
 export class AttendanceComponent implements OnInit {
   attendances: Attendance[];
-  constructor(private attendanceService: AttendanceService, private router: Router) {
+  studentList: Students[];
+  constructor(private attendanceService: AttendanceService, private Router: Router) {
     this.attendances = [];
     this.attendanceService.getAttendanceList().subscribe(attendance => this.attendances = this.attendances.concat(attendance));
   }
@@ -19,9 +21,10 @@ export class AttendanceComponent implements OnInit {
   ngOnInit() {
   }
 
-  showDetails(attendance) {
-    console.log(attendance);
-    this.router.navigate(['attendance/', attendance.id])
+  showDetails(id) {
+    console.log(id);
+    this.Router.navigate(['attendance/', id]);
+    console.log(this.Router.navigate(['attendance/', id]));
   }
 
 }

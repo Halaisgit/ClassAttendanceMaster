@@ -2,26 +2,74 @@
   <h1>
     {{"Attendance List"}}
   </h1>
-</div>
-<table class="table border-bottom-0 rounded" >
-  <thead class="thead-default">
-  <tr>
-    <th>ID</th>
-    <th>Class Name</th>
-    <th>Date</th>
-    <th>Lecturer</th>
-    <th>Subject</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <th>{{ attendanceList.id }}</th>
-    <th>{{attendanceList.name}}</th>
-    <th>{{attendanceList.dateTime | date: 'dd/MM/yyyy HH:MM'}} </th>
-    <th>{{attendanceList.lecturer.title}} {{attendanceList.lecturer.firstName}} {{attendanceList.lecturer.lastName}}</th>
-    <th>{{attendanceList.subject.name}} {{attendanceList.subject.subjectType}}</th>
-  </tr>
-  </tbody>
-</table>
 
+  <div>
+    <table class="table border-bottom-0 rounded">
+      <thead class="thead-default">
+      <tr>
+        <th>ID</th>
+        <th>Class Name</th>
+        <th>Date</th>
+        <th>Lecturer</th>
+        <th>Subject</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngIf="attendanceList">
+        <th>{{attendanceList.id}}</th>
+        <th>{{attendanceList.name}}</th>
+        <th>{{attendanceList.dateTime | date: 'dd/MM/yyyy HH:MM'}}</th>
+        <th>{{attendanceList.lecturer.title}} {{attendanceList.lecturer.firstName}} {{attendanceList.lecturer.lastName}}
+        </th>
+        <th>{{attendanceList.subject.name}} {{attendanceList.subject.subjectType}}</th>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <table class="table table-bordered rounded">
+      <thead class="thead-inverse">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Album Number</th>
+      </tr>
+      </thead>
+      <tbody *ngIf="attendanceList">
+      <tr *ngFor="let studentList of attendanceList.studentList">
+        <th>{{studentList.id}}</th>
+        <th>{{studentList.firstName}}</th>
+        <th>{{studentList.lastName}}</th>
+        <th>{{studentList.albumNumber}}</th>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div><label> New Student: </label>
+    <table class="table table-bordered">
+      <thead class="thead-default">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Album Number</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th><input #studentName/></th>
+        <th><input #studentLastName/></th>
+        <th><input #studentAlbumNumber/>
+          <button type="button"
+                  (click)="create({firstName: studentName.value, lastName: studentLastName.value, albumNumber: studentAlbumNumber.value})">
+            Add New
+          </button>
+        </th>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<router-outlet></router-outlet>
 

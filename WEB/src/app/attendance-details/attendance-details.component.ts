@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AttendanceService} from '../services/attendance.service';
 import {Attendance} from '../interfaces/attendance';
 import {ActivatedRoute} from '@angular/router';
+import {Students} from '../interfaces/students.interface';
 
 @Component({
   selector: 'app-attendance-details',
@@ -10,18 +11,29 @@ import {ActivatedRoute} from '@angular/router';
   providers: [AttendanceService]
 })
 export class AttendanceDetailsComponent implements OnInit {
-  attendanceList: Attendance;
-  private eventID: number = 0;
+  public attendanceList: Attendance;
+  private eventID: number;
 
   constructor(private attendanceService: AttendanceService, private activatedRoute: ActivatedRoute) {
     this.activatedRoute.params.subscribe(param => {
       this.eventID = +param['id'];
       console.log(this.eventID);
-      console.log(this.attendanceList);
     });
+    console.log(this.attendanceList);
     this.attendanceService.getOne(this.eventID).subscribe(attendance => this.attendanceList = attendance);
+    console.log(this.attendanceList);
   }
 
   ngOnInit() {
+
   }
+
+  create(data: Students) {
+    if (data) {
+      this.attendanceService.addStudentToList(data, this.eventID).subscribe(() =>
+        this.attendanceService.getOne(this.eventID).subscribe(attendance => this.attendanceList = attendance));
+      data = null;
+    }
+  }
+
 }

@@ -21,10 +21,28 @@
     <th>{{attendance.dateTime | date: 'dd/MM/yyyy HH:MM'}}</th>
     <th>{{attendance.lecturer.title}} {{attendance.lecturer.firstName}} {{attendance.lecturer.lastName}}</th>
     <th>{{attendance.subject.name}} {{attendance.subject.subjectType}}</th>
-    <th> <button type="button" (click)="showDetails(attendance)"> Details </button> </th>
+    <th> <button type="button" (click)="showDetails(attendance.id)"> Details </button> </th>
   </tr>
   </tbody>
 </table>
+<!--<table class="table border-bottom-0 rounded" >-->
+  <!--<thead class="thead-inverse">-->
+  <!--<tr>-->
+    <!--<th>ID</th>-->
+    <!--<th>Name</th>-->
+    <!--<th>Last Name</th>-->
+    <!--<th>Album Number</th>-->
+  <!--</tr>-->
+  <!--</thead>-->
+  <!--<tbody *ngFor="let attendance of attendances" >-->
+  <!--<tr *ngFor="let studentList of attendance.studentList">-->
+    <!--<th > {{studentList.id}}</th>-->
+    <!--<th> {{studentList.firstName}}</th>-->
+    <!--<th> {{studentList.lastName}}</th>-->
+    <!--<th> {{studentList.albumNumber}}</th>-->
+  <!--</tr>-->
+  <!--</tbody>-->
+<!--</table>-->
 <router-outlet></router-outlet>
 
 
